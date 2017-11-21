@@ -93,10 +93,18 @@ layui.use(['jquery','layer', 'form','element'], function(){
   element = layui.element;
 
 });
+//marker 点击事件
+function pointClick() {
+	var marker=this;
+	var job_a=$("a.list_a[href='#"+marker.ba+"']");
+	job_a.addClass("clicked_a");
+	job_a.siblings().removeClass("clicked_a");
+}
 // 编写自定义函数,创建标注
 	function addMarker(point,ba){
 	  var marker = new BMap.Marker(point);
 		marker.ba=ba;
+		marker.addEventListener("click",pointClick)
 	  map.addOverlay(marker);
 	}
 	// 百度地图API功能
@@ -111,6 +119,7 @@ layui.use(['jquery','layer', 'form','element'], function(){
 	map.setCurrentCity("杭州");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
+	//增加marker
 	$.get('/getpoint',function(data){
 		var obj = $.parseJSON(data.replace(/'/g,"\""));
 		$.each(obj.data,function (i,m) {
@@ -121,24 +130,38 @@ layui.use(['jquery','layer', 'form','element'], function(){
 
 
 
-
 $("div.layui-tab-item a").click(function(){
-	$(this).css("background-color","#efdbac");
-	$(this).siblings().css("background-color","rgb(255,255,255)");
+	$(this).addClass("clicked_a");
+	$(this).siblings().removeClass("clicked_a");
 	
 	$.get('','',function(data){
 		$("pre").text(data);
 		element.tabChange("demo", "job_pre");
 
 	})
+});
+
+//marker hover 跳动
+$("div.layui-tab-item a").hover(function () {
+	var id=$(this).attr("href").substring(1);
+	$.each(map.getOverlays(),function (i,n) {
+		if( n.ba==id)
+		{
+		    n.setAnimation(BMAP_ANIMATION_BOUNCE);
+		    return false;
+		}
+	});
+},function () {
+	var id=$(this).attr("href").substring(1);
+	$.each(map.getOverlays(),function (i,n) {
+		if( n.ba==id)
+		{
+		    n.setAnimation(null);
+		    return false;
+		}
+	});
 })
-$("div.layui-tab-item a").focus(function () {
-	var that=this;
-	var id=$(that).attr("href").substring(1);
-	var point= $.grep(allOverlay,function (n,i) {
-		return n.ba==id;
-	})
-})
+
 
 
 $("a i.mark").click(function(){

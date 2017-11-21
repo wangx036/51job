@@ -21,6 +21,7 @@ body{padding: 10px;}
 
 }
 a.list_a:hover{background-color:#f0f0e4; }
+.clicked_a{background-color:#efdbac}
 
 aside {
 	color:rgb(138,138,138);

@@ -41,7 +41,7 @@
 				</a>
 
 				{% for job in job_list %}
-					<a href="javascript:void(0)" class="list_a" >
+					<a href="#{{job.id}}" class="list_a"  >
 						<i class="layui-icon mark">&#xe658;</i>
 						<h3>{{ job.name }}</h3>
 						<aside>{{job.coname}}</aside>
@@ -81,7 +81,7 @@
 
 
 <script src="/static/layui/layui.js"></script>
-  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pLEABGl2IKdXA4ubEy48brPceCGGW2uM"></script>
 <script type="text/javascript">
 	var element;
@@ -123,7 +123,7 @@ layui.use(['jquery','layer', 'form','element'], function(){
 
 
 $("div.layui-tab-item a").click(function(){
-	$(this).css("background-color","#daf6d4");
+	$(this).css("background-color","#efdbac");
 	$(this).siblings().css("background-color","rgb(255,255,255)");
 	
 	$.get('','',function(data){
@@ -132,6 +132,15 @@ $("div.layui-tab-item a").click(function(){
 
 	})
 })
+$("div.layui-tab-item a").focus(function () {
+	var that=this;
+	var id=$(that).attr("href").substring(1);
+	var point= $.grep(allOverlay,function (n,i) {
+		return n.ba==id;
+	})
+})
+
+
 $("a i.mark").click(function(){
 var that=this;
 $(that).hasClass("stared")?$(that).removeClass("stared"):$(that).addClass("stared");

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+
+  <link rel="stylesheet" href="/static/main.css">
+<link rel="stylesheet" href="/static/layui/css/layui.css">
+
+
+</head>
+<body>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space5">
+    <div class="layui-col-md8">
+      <div id="allmap" class="layui-tab-card" style="height:600px"></div>
+    </div>
+    <div class="layui-col-md4">
+		<div class="layui-tab layui-tab-card" lay-filter="demo">
+		  <ul class="layui-tab-title">
+			<li class="layui-this">职位列表</li>
+			<li lay-id="job_pre">职位详情</li>
+		  </ul>
+		  <div class="layui-tab-content" style="height:550px;overflow-y: auto;overflow-x: hidden;">
+			<div class="layui-tab-item layui-show">
+				<a href="javascript:void(0)" class="list_a" >
+					<i class="layui-icon mark">&#xe658;</i>  
+					<h3>数据分析师</h3>
+					<aside>“前程无忧”51job.com（上海）</aside>
+					<i class="list_i">浦东新区</i>
+					<em>面议</em>
+				</a>
+				<a href="javascript:void(0)" class="list_a" >
+					<i class="layui-icon mark">&#xe658;</i>  
+					<h3>数据分析师</h3>
+					<aside>“前程无忧”51job.com（上海）</aside>
+					<i class="list_i">浦东新区</i>
+					<em>面议</em>
+				</a>
+
+				{% for job in job_list %}
+					<a href="javascript:void(0)" class="list_a" >
+						<i class="layui-icon mark">&#xe658;</i>
+						<h3>{{ job.name }}</h3>
+						<aside>{{job.coname}}</aside>
+						<i class="list_i"></i>
+						<em>{{job.salaryname}}</em>
+					</a>
+				{% endfor %}
+				</div>
+			<div class="layui-tab-item">
+				<pre>
+岗位职责：
+1、运用数据挖掘/统计学习的理论和方法，深入挖掘和分析用户行为、业务数据。
+2、负责并参与方案讨论、技术调研及产品开发，负责相关文档的编写。
+3、与团队内部以及需求部门进行有效沟通，跟进项目进度以及解决相关数据问题。
+
+任职要求：
+1、本科及以上学历，统计学、应用数学或计算机科学等相关专业背景优先考虑。
+2、熟悉互联网行业，了解用户需求，懂用户体验。
+3、熟悉数据挖掘、机器学习、人工智能技术，尤其是关联分析、分类预测、协同过滤、聚类分析、回归分析、时间序列分析等常用分析方法，2年以上有数据挖掘、数据产品开发等相关项目经验者优先考虑。
+4、至少掌握一门编程语言，熟练使用常用算法和数据结构，有较强的实现能力，能熟练使用R语言、Python者优先考虑。
+5、具备责任心和良好的团队协作精神，乐于沟通交流和分享，充满激情，乐于接受挑战。
+
+任职要求：
+1、本科及以上学历，统计学、应用数学或计算机科学等相关专业背景优先考虑。
+2、熟悉互联网行业，了解用户需求，懂用户体验。
+3、熟悉数据挖掘、机器学习、人工智能技术，尤其是关联分析、分类预测、协同过滤、聚类分析、回归分析、时间序列分析等常用分析方法，2年以上有数据挖掘、数据产品开发等相关项目经验者优先考虑。
+4、至少掌握一门编程语言，熟练使用常用算法和数据结构，有较强的实现能力，能熟练使用R语言、Python者优先考虑。
+5、具备责任心和良好的团队协作精神，乐于沟通交流和分享，充满激情，乐于接受挑战。
+				</pre>
+			</div>
+		  </div>
+		</div>
+    </div>
+  </div>
+ </div>
+
+
+
+<script src="/static/layui/layui.js"></script>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pLEABGl2IKdXA4ubEy48brPceCGGW2uM"></script>
+<script type="text/javascript">
+	var element;
+layui.use(['jquery','layer', 'form','element'], function(){
+  var $=layui.jquery,
+  layer = layui.layer
+  ,form = layui.form;
+
+  element = layui.element;
+
+});
+// 编写自定义函数,创建标注
+	function addMarker(point,ba){
+	  var marker = new BMap.Marker(point);
+		marker.ba=ba;
+	  map.addOverlay(marker);
+	}
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(121.4832360,31.2380600), 13);  // 初始化地图,设置中心点坐标和地图级别
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));	  
+	map.setCurrentCity("杭州");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+	$.get('/getpoint',function(data){
+		var obj = $.parseJSON(data.replace(/'/g,"\""));
+		$.each(obj.data,function (i,m) {
+			var point=new BMap.Point(m.lng,m.lat);
+			addMarker(point,String(m.id))
+		})
+	})
+
+
+
+
+$("div.layui-tab-item a").click(function(){
+	$(this).css("background-color","#daf6d4");
+	$(this).siblings().css("background-color","rgb(255,255,255)");
+	
+	$.get('','',function(data){
+		$("pre").text(data);
+		element.tabChange("demo", "job_pre");
+
+	})
+})
+$("a i.mark").click(function(){
+var that=this;
+$(that).hasClass("stared")?$(that).removeClass("stared"):$(that).addClass("stared");
+ 
+//$.post('','',function(){
+//	$(that).css("color",color);
+//})
+return false;
+})
+
+</script>
+</body>
+</html>

@@ -1,129 +1,146 @@
-body{padding: 10px;}
+body {
+    padding: 10px;
+}
+
 .list_a {
-	background-color:rgb(255,255,255);
-	border-bottom-color:rgb(225,225,225);
-	border-bottom-style:solid;
-	border-bottom-width:1px;
-	color:rgb(138,138,138);
-	cursor:auto;
-	display:block;
-	font-size:14px;
-	height:42px;
-	line-height:20px;
-	padding-bottom:10px;
-	padding-left:40px;
-	padding-right:10px;
-	padding-top:10px;
-	position:relative;
-	text-decoration-color:rgb(138,138,138);
-	text-decoration-line:none;
-	text-decoration-style:solid;
+    background-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(225, 225, 225);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: rgb(138, 138, 138);
+    cursor: auto;
+    display: block;
+    font-size: 14px;
+    height: 42px;
+    line-height: 20px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+    padding-top: 10px;
+    position: relative;
+    text-decoration-color: rgb(138, 138, 138);
+    text-decoration-line: none;
+    text-decoration-style: solid;
 
 }
-a.list_a:hover{background-color:#f0f0e4; }
-.clicked_a{background-color:#efdbac}
+
+a.list_a:hover {
+    background-color: #f0f0e4;
+}
+
+.clicked_a {
+    background-color: #efdbac
+}
 
 aside {
-	color:rgb(138,138,138);
-	cursor:auto;
-	display:block;
-	font-size:12px;
-	height:20px;
-	line-height:20px;
-	overflow-x:hidden;
-	overflow-y:hidden;
-	padding-right:100px;
-	text-overflow:ellipsis;
-	white-space:nowrap;
+    color: rgb(138, 138, 138);
+    cursor: auto;
+    display: block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-right: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
 h3 {
-	color:rgb(0,0,0);
-	cursor:auto;
-	display:block;
-	font-size:15px;
-	font-weight:400;
-	height:20px;
-	line-height:20px;
-	margin-bottom:2px;
-	margin-left:0px;
-	margin-right:0px;
-	margin-top:0px;
-	overflow-x:hidden;
-	overflow-y:hidden;
-	padding-bottom:0px;
-	padding-left:0px;
-	padding-right:115px;
-	padding-top:0px;
-	position:relative;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-	width:235px;
-	-webkit-margin-after:2px;
-	-webkit-margin-before:0px;
-	-webkit-margin-end:0px;
-	-webkit-margin-start:0px;
+    color: rgb(0, 0, 0);
+    cursor: auto;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 115px;
+    padding-top: 0px;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 235px;
+    -webkit-margin-after: 2px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-margin-start: 0px;
 }
+
 .list_i {
-	color:rgb(138,138,138);
-	cursor:auto;
-	display:block;
-	font-size:12px;
-	font-style:normal;
-	font-weight:400;
-	height:20px;
-	line-height:20px;
-	overflow-x:hidden;
-	overflow-y:hidden;
-	position:absolute;
-	right:10px;
-	text-align:right;
-	text-overflow:ellipsis;
-	top:10px;
-	white-space:nowrap;
-	width:80px;
+    color: rgb(138, 138, 138);
+    cursor: auto;
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    text-overflow: ellipsis;
+    top: 10px;
+    white-space: nowrap;
+    width: 80px;
 }
+
 em {
-	color:rgb(255,122,3);
-	cursor:auto;
-	display:block;
-	font-size:15px;
-	font-style:normal;
-	font-weight:400;
-	height:20px;
-	line-height:20px;
-	overflow-x:hidden;
-	overflow-y:hidden;
-	position:absolute;
-	right:10px;
-	text-align:right;
-	text-overflow:ellipsis;
-	top:30px;
-	white-space:nowrap;
-	width:100px;
+    color: rgb(255, 122, 3);
+    cursor: auto;
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    height: 20px;
+    line-height: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    text-overflow: ellipsis;
+    top: 30px;
+    white-space: nowrap;
+    width: 100px;
 }
+
 .mark {
-	color:rgb(138,138,138);
-	cursor:auto;
-	display:block;
-	font-size:20px;
-	font-style:normal;
-	font-weight:400;
-	height:25px;
-	left:8px;
-	line-height:20px;
-	margin-top:-13px;
-	position:absolute;
-	top:31px;
-	width:25px;
+    color: rgb(138, 138, 138);
+    cursor: auto;
+    display: block;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    height: 25px;
+    left: 8px;
+    line-height: 20px;
+    margin-top: -13px;
+    position: absolute;
+    top: 31px;
+    width: 25px;
 }
-.stared{color:rgb(255, 0, 0)}
+
+.stared {
+    color: rgb(255, 0, 0)
+}
+
 pre {
-	color:rgb(0,0,0);
-	display:block;
-	font-size:14px;
-	height:504px;
-	line-height:24px;
-	max-height:none;
-	word-break:break-all;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-size: 14px;
+    height: 504px;
+    line-height: 24px;
+    max-height: none;
+    word-break: break-all;
     font-family: -webkit-body;
 }

@@ -51,10 +51,13 @@ def get_job_model(id):
 
 # 插入
 def add_job(job):
-    session = DBSession()
-    session.add(job)
-    session.commit()
-    session.close()
+    try:
+        session = DBSession()
+        session.add(job)
+        session.commit()
+        session.close()
+    except:
+        return
 
 
 JOBS = get_job_list()

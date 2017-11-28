@@ -20,7 +20,7 @@
         <div class="layui-col-md4">
             <div class="layui-tab layui-tab-card" lay-filter="demo">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">职位列表</li>
+                    <li lay-id="job_list" class="layui-this" onclick="backtoMao()">职位列表</li>
                     <li lay-id="job_pre">职位详情</li>
                 </ul>
                 <div class="layui-tab-content" style="height:550px;overflow-y: auto;overflow-x: hidden;">
@@ -66,6 +66,8 @@
         var job_a = $("a.list_a[href='#" + marker.ba + "']");
         job_a.addClass("clicked_a");
         job_a.siblings().removeClass("clicked_a");
+        element.tabChange("demo", "job_list");
+        gotoMao(marker.ba);
     }
     // 编写自定义函数,创建标注
     function addMarker(point, ba) {
@@ -75,7 +77,7 @@
         map.addOverlay(marker);
     }
     // 百度地图API功能
-    var map = new BMap.Map("allmap");    // 创建Map实例
+    var map = new BMap.Map("allmap", {enableMapClick: false});    // 创建Map实例
     map.centerAndZoom(new BMap.Point(120.101838, 30.289734), 13);  // 初始化地图,设置中心点坐标和地图级别
     //添加地图类型控件
     map.addControl(new BMap.MapTypeControl({
@@ -96,6 +98,20 @@
         })
     });
 
+    //返回定位到锚点
+    function backtoMao() {
+        id = (location.href.match(/#\d+/)[0] || "0").substr(1);
+        if (id)
+            gotoMao(id)
+    }
+
+    //定位到锚点
+    function gotoMao(point) {
+        var index = $("a.list_a").index($("a[href='#" + point + "']"));
+        $('div.layui-tab-content').animate({
+            scrollTop: 63 * index
+        }, 500);
+    }
 
     //点击事件
     $("div.layui-tab-item a").click(function () {
